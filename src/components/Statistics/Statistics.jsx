@@ -1,14 +1,14 @@
 import React from 'react';
-import { Span } from '../Statistics/Span.styled';
+import { Ul } from '../Statistics/Span.styled';
 
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => (
-  <Span>
-    <p>Good: {good}</p>
-    <p>Neutral: {neutral}</p>
-    <p>Bad: {bad}</p>
-    <p>Total: {total}</p>
-    <p>Positive feedback: {positivePercentage}%</p>
-  </Span>
+  <Ul>
+    <li>Good: {good}</li>
+    <li>Neutral: {neutral}</li>
+    <li>Bad: {bad}</li>
+    <li>Total: {total}</li>
+    <li>Positive feedback: {positivePercentage}%</li>
+  </Ul>
 );
 
 export default Statistics;

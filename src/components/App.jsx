@@ -20,20 +20,12 @@ export class App extends React.Component {
     bad: this.props.initialBad,
   };
 
-  handleGood = () => {
-    this.setState(prevState => ({
-      good: prevState.good + 1,
-    }));
-  };
-  handleNeutral = () => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-    }));
-  };
-  handleBad = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
-    }));
+  onLeaveFeedback = (option) => {
+
+  this.setState(prevState => ({
+    [option]: prevState[option] + 1,
+  }));
+
   };
 
   countTotalFeedback = (g, b, n) => {
@@ -73,14 +65,12 @@ export class App extends React.Component {
     return (
       <>
         <h1>Please leave feedback</h1>
-        <FeedbackOptions
-          onGood={this.handleGood}
-          onNeutral={this.handleNeutral}
-          onBad={this.handleBad}
-        />
+        <FeedbackOptions options={['good', 'neutral', 'bad']} onLeaveFeedback={this.onLeaveFeedback} />
+
         <h1>Statistics</h1>
         {content}
       </>
     );
   }
 }
+
