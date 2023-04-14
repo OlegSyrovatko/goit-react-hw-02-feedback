@@ -5,27 +5,16 @@ import Statistics from 'components/Statistics';
 import Notification from 'components/Notification';
 
 export class App extends React.Component {
-  static state = {
-    initialGood: 0,
-    initialNeutral: 0,
-    initialBad: 0,
-    initialData: 'There is no feedback',
-  };
-
-  static propTypes = {};
-
   state = {
-    good: this.props.initialGood,
-    neutral: this.props.initialNeutral,
-    bad: this.props.initialBad,
+    good: 0,
+    neutral: 0,
+    bad: 0,
   };
 
-  onLeaveFeedback = (option) => {
-
-  this.setState(prevState => ({
-    [option]: prevState[option] + 1,
-  }));
-
+  onLeaveFeedback = option => {
+    this.setState(prevState => ({
+      [option]: prevState[option] + 1,
+    }));
   };
 
   countTotalFeedback = (g, b, n) => {
@@ -65,7 +54,10 @@ export class App extends React.Component {
     return (
       <>
         <h1>Please leave feedback</h1>
-        <FeedbackOptions options={['good', 'neutral', 'bad']} onLeaveFeedback={this.onLeaveFeedback} />
+        <FeedbackOptions
+          options={['good', 'neutral', 'bad']}
+          onLeaveFeedback={this.onLeaveFeedback}
+        />
 
         <h1>Statistics</h1>
         {content}
@@ -73,4 +65,3 @@ export class App extends React.Component {
     );
   }
 }
-
